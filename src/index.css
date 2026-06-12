@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&family=Dancing+Script:wght@500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --background: 39 33% 97%;
+        --foreground: 120 16% 18%;
+        --card: 0 0% 100%;
+        --card-foreground: 120 16% 18%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 120 16% 18%;
+        --primary: 109 14% 68%;
+        --primary-foreground: 0 0% 100%;
+        --secondary: 0 56% 90%;
+        --secondary-foreground: 120 16% 18%;
+        --muted: 39 25% 94%;
+        --muted-foreground: 120 9% 39%;
+        --accent: 45 65% 52%;
+        --accent-foreground: 0 0% 100%;
+        --destructive: 0 84% 60%;
+        --destructive-foreground: 0 0% 98%;
+        --border: 38 19% 88%;
+        --input: 38 19% 88%;
+        --ring: 109 14% 68%;
+        --radius: 1rem;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+    html {
+        scroll-behavior: smooth;
+    }
+    body {
+        @apply bg-cream text-ink;
+        font-family: 'Montserrat', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        overflow-x: hidden;
+    }
+    h1, h2, h3, h4, h5 {
+        font-family: 'Playfair Display', serif;
+        font-weight: 500;
+        letter-spacing: -0.01em;
+    }
+    ::selection {
+        background-color: #F4D6D6;
+        color: #2C3E2D;
+    }
+}
+
+@layer components {
+    .container-luxe {
+        @apply max-w-7xl mx-auto px-6 md:px-12 lg:px-20;
+    }
+    .section-pad {
+        @apply py-20 md:py-32;
+    }
+    .eyebrow {
+        @apply text-xs md:text-sm tracking-[0.3em] uppercase text-gold font-medium;
+    }
+    .btn-primary {
+        @apply inline-flex items-center justify-center gap-2 bg-sage hover:bg-sage-dark text-white rounded-full px-7 py-3.5 text-xs md:text-sm tracking-[0.2em] uppercase font-medium transition-all duration-300 shadow-sm hover:shadow-md;
+    }
+    .btn-secondary {
+        @apply inline-flex items-center justify-center gap-2 bg-white/90 hover:bg-white text-ink rounded-full px-7 py-3.5 text-xs md:text-sm tracking-[0.2em] uppercase font-medium transition-all duration-300 border border-white/60 backdrop-blur-md;
+    }
+    .btn-outline-gold {
+        @apply inline-flex items-center justify-center gap-2 border border-gold text-gold hover:bg-gold hover:text-white rounded-full px-7 py-3.5 text-xs md:text-sm tracking-[0.2em] uppercase font-medium transition-all duration-300;
+    }
+    .glass-card {
+        @apply bg-white/40 backdrop-blur-xl border border-white/60 shadow-lg;
+    }
+    .divider-floral {
+        @apply flex items-center justify-center gap-3 text-gold/70;
+    }
+}
+
+/* Animated gradient text */
+.text-gold-shimmer {
+    background: linear-gradient(90deg, #D4AF37 0%, #F4D6D6 50%, #D4AF37 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shimmer 4s linear infinite;
+}
+
+/* Custom cursor hint on interactive luxury elements */
+.cursor-luxe { cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'><circle cx='14' cy='14' r='6' fill='%23D4AF37' opacity='0.7'/></svg>") 14 14, pointer; }
+
+/* Hide scrollbar but keep functionality on horizontal scroll utility */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Falling petal individual styles */
+.petal {
+    position: fixed;
+    top: -10vh;
+    pointer-events: none;
+    z-index: 5;
+    will-change: transform, opacity;
+}
+
+/* Smooth image reveal */
+.img-zoom { transition: transform 0.9s ease; }
+.img-zoom:hover { transform: scale(1.06); }
+
+/* Masonry */
+.masonry { column-gap: 1rem; }
+@media (min-width: 640px) { .masonry { column-count: 2; } }
+@media (min-width: 1024px) { .masonry { column-count: 3; } }
+.masonry > * { break-inside: avoid; margin-bottom: 1rem; }
+
+/* Decorative SVG border */
+.border-leaf {
+    background-image: linear-gradient(to right, transparent, #D4AF37 30%, #D4AF37 70%, transparent);
+    height: 1px;
+}
+
+[data-debug-wrapper="true"] { display: contents !important; }
